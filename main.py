@@ -9,7 +9,7 @@ class Sprite(sprite.Sprite):
         self.rect.y = y
     def draw (self):
         window.blit(self.image, (self.rect.x, self.rect.y))
-
+""" sus """
 class Player(Sprite):
     def __init__(self, filename, width, height, x, y, ):
         super().__init__(filename, width, height, x, y)
