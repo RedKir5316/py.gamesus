@@ -1,5 +1,7 @@
 from pygame import *
 from sys import exit
+
+
 class Sprite(sprite.Sprite):
     def __init__(self, filename, width, height, x, y):
         super().__init__()
@@ -7,8 +9,11 @@ class Sprite(sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
+        
     def draw (self):
         window.blit(self.image, (self.rect.x, self.rect.y))
+
+
 """ sus """
 class Player(Sprite):
     def __init__(self, filename, width, height, x, y, ):
@@ -16,6 +21,7 @@ class Player(Sprite):
         self.speedx = 0
         self.speedy = 0
         self.touch_jump = False
+        
     def update(self):
         keys_pressed = key.get_pressed()
         self.speedx = 0
@@ -46,10 +52,12 @@ class Player(Sprite):
             if self.speedx < 0:
                 self.rect.left = max(self.rect.left, platform.rect.right)
 
+
 class Enemy(Sprite):
     def __init__(self, filename, width, height, x, y, speed):
         super().__init__(filename, width, height, x, y)
         self.speed = speed
+        
     def update(self):
         if toast.rect.x > self.rect.x:
             self.rect.x += self.speed
@@ -60,7 +68,6 @@ class Enemy(Sprite):
             self.rect.y += self.speed
         else:
             self.rect.y -= self.speed
-
 
 
 window = display.set_mode((1280, 720))
@@ -90,14 +97,6 @@ gohts = sprite.Group(
 boom = image.load("Cabooom.jpg")
 boom = transform.scale(boom,(1280, 720))
 finish = False
-
-
-
-
-
-
-
-
 
 
 while True:
